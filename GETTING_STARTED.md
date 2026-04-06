@@ -325,19 +325,6 @@ REACT_APP_BACKEND_URL=http://localhost:3000
 REACT_APP_API_URL=http://localhost:3000
 ```
 
-## Docker Setup
-
-If you prefer Docker:
-
-```bash
-# Build and run both services
-docker-compose up --build
-
-# Access
-# Backend: http://localhost:3000
-# Frontend: http://localhost:5173
-```
-
 ## Next Steps
 
 1. ✅ **Get it running** - Follow steps above

@@ -59,18 +59,7 @@ npm run dev
 
 The frontend will be available at `http://localhost:5173`.
 
-## 🐳 Docker Setup
-
-Run both services with Docker Compose:
-
-```bash
-docker-compose up --build
-```
-
-- Backend: http://localhost:3000
-- Frontend: http://localhost:5173
-
-## 📁 Project Structure
+##  Project Structure
 
 ```
 football-simulator/
@@ -101,7 +90,6 @@ football-simulator/
 │   ├── tailwind.config.js
 │   └── README.md                  # Frontend documentation
 │
-├── docker-compose.yml
 └── README.md                      # This file
 ```
 
@@ -320,7 +308,6 @@ This project demonstrates:
 - TypeScript advanced features
 - Tailwind CSS responsive design
 - Jest unit testing
-- Docker containerization
 - CORS and REST API design
 
 ## 🔄 Future Enhancements
