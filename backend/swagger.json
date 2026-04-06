@@ -1,0 +1,313 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/simulations": {
+      "post": {
+        "operationId": "SimulationController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSimulationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      },
+      "get": {
+        "operationId": "SimulationController_getAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SimulationResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      }
+    },
+    "/simulations/{id}": {
+      "get": {
+        "operationId": "SimulationController_getOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Simulation UUID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      }
+    },
+    "/simulations/{id}/start": {
+      "post": {
+        "operationId": "SimulationController_start",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Simulation UUID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      }
+    },
+    "/simulations/{id}/finish": {
+      "post": {
+        "operationId": "SimulationController_finish",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Simulation UUID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      }
+    },
+    "/simulations/{id}/restart": {
+      "post": {
+        "operationId": "SimulationController_restart",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Simulation UUID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "simulations"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Football Simulator API",
+    "description": "API documentation for the Football Simulator backend",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "CreateSimulationDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The display name for the simulation",
+            "minLength": 8,
+            "maxLength": 30,
+            "example": "Tournament Match 1"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "TeamDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "germany"
+          },
+          "name": {
+            "type": "string",
+            "example": "Germany"
+          },
+          "flagEmoji": {
+            "type": "string",
+            "example": "🇩🇪"
+          },
+          "score": {
+            "type": "number",
+            "example": 0
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "flagEmoji",
+          "score"
+        ]
+      },
+      "MatchDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "match-1"
+          },
+          "name": {
+            "type": "string",
+            "example": "Germany vs Poland"
+          },
+          "homeTeam": {
+            "$ref": "#/components/schemas/TeamDto"
+          },
+          "awayTeam": {
+            "$ref": "#/components/schemas/TeamDto"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "homeTeam",
+          "awayTeam"
+        ]
+      },
+      "SimulationResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"
+          },
+          "name": {
+            "type": "string",
+            "example": "Tournament Match 1"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "running",
+              "finished"
+            ],
+            "example": "idle"
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MatchDto"
+            }
+          },
+          "elapsedTime": {
+            "type": "number",
+            "example": 0
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2026-04-06T11:07:34.775Z"
+          },
+          "startedAt": {
+            "type": "string",
+            "example": "2026-04-06T11:07:34.775Z"
+          },
+          "finishedAt": {
+            "type": "string",
+            "example": "2026-04-06T11:07:34.775Z"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "status",
+          "matches",
+          "elapsedTime",
+          "createdAt"
+        ]
+      }
+    }
+  }
+}

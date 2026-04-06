@@ -233,16 +233,6 @@ npm run lint
 - Automatic reconnection on disconnect
 - Real-time score synchronization
 
-## 🎨 UI/UX Features
-
-- **Responsive Grid Layout**: 3 columns on desktop, 2 on tablet, 1 on mobile
-- **Live Animations**: Goal scoring animations and status indicators
-- **Real-time Timer**: Displays elapsed time (0-9 seconds)
-- **Status Badges**: Visual indicators for running/finished/idle states
-- **Error Feedback**: Inline validation and error messages
-- **Loading States**: Button states during API calls
-- **Dark Theme**: Eye-friendly dark gradient interface
-
 ## 🔐 Validation Rules
 
 ### Simulation Name
@@ -250,18 +240,6 @@ npm run lint
 - ✅ Characters: a-z, A-Z, 0-9, spaces
 - ❌ Special characters not allowed
 - ❌ Numbers cannot exceed length requirements
-
-### Examples
-
-Valid names:
-- "World Cup 2024"
-- "Football Match 1"
-- "Test Simulation 123"
-
-Invalid names:
-- "Short" (< 8 chars)
-- "This name is way too long to be valid for simulation" (> 30 chars)
-- "Invalid@Name!" (special characters)
 
 ## 📦 Dependencies
 
@@ -278,16 +256,6 @@ Invalid names:
 - `tailwindcss`: Utility-first CSS
 - `vite`: Build tool
 
-## 🚨 Error Handling
-
-The application handles and displays:
-- Validation errors (form submission)
-- Network errors (API failures)
-- WebSocket connection issues
-- Business logic errors (rate limiting, state validation)
-
-Error messages are user-friendly and provide guidance for resolution.
-
 ## 💡 Best Practices Implemented
 
 - **Type Safety**: Strict TypeScript throughout
@@ -298,78 +266,3 @@ Error messages are user-friendly and provide guidance for resolution.
 - **Security**: Input validation and sanitization
 - **Scalability**: Ready for database integration
 - **Documentation**: Inline comments and README files
-
-## 🎓 Learning Opportunities
-
-This project demonstrates:
-- Nest.js modular architecture
-- WebSocket implementation with Socket.io
-- React hooks and state management
-- TypeScript advanced features
-- Tailwind CSS responsive design
-- Jest unit testing
-- CORS and REST API design
-
-## 🔄 Future Enhancements
-
-- [ ] Database persistence (PostgreSQL)
-- [ ] User authentication
-- [ ] Match history and replays
-- [ ] Advanced statistics
-- [ ] Player performance tracking
-- [ ] Tournament bracket support
-- [ ] Custom team selection
-- [ ] Multi-language support
-- [ ] Dark/light theme toggle
-- [ ] Mobile app (React Native)
-
-## 📝 Environment Variables
-
-### Backend (.env)
-```env
-PORT=3000
-NODE_ENV=development
-```
-
-### Frontend (.env)
-```env
-REACT_APP_BACKEND_URL=http://localhost:3000
-REACT_APP_API_URL=http://localhost:3000
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📄 License
-
-MIT License - feel free to use this project for learning or commercial purposes.
-
-## 👨‍💻 Author
-
-Football Simulator - A comprehensive demo application showcasing modern full-stack development practices.
-
-## 🆘 Support
-
-For issues, questions, or suggestions:
-1. Check the backend [README.md](backend/README.md)
-2. Check the frontend [README.md](frontend/README.md)
-3. Review the source code comments
-4. Check WebSocket connection status in browser console
-
-## 📚 Additional Resources
-
-- [Nest.js Documentation](https://docs.nestjs.com)
-- [React Documentation](https://react.dev)
-- [Socket.io Documentation](https://socket.io/docs/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-
----
-
-**Happy Simulating! ⚽**

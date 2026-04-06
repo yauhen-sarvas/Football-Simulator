@@ -53,6 +53,22 @@ npm run build
 npm run start:prod
 ```
 
+## Swagger API Documentation
+
+Once the backend is running, Swagger UI is available at:
+
+```bash
+http://localhost:3000/api-docs
+```
+
+To generate a static OpenAPI JSON file, run:
+
+```bash
+npm run swagger:generate
+```
+
+This will write `swagger.json` to the backend root.
+
 ## Testing
 
 ```bash
