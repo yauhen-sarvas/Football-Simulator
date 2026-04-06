@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed;
+  }
+
+  .btn-success {
+    @apply px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed;
+  }
+
+  .card-base {
+    @apply bg-white rounded-xl shadow-lg p-6;
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-2xl p-6;
+  }
+
+  .text-status-running {
+    @apply text-blue-600 font-semibold;
+  }
+
+  .text-status-finished {
+    @apply text-gray-600 font-semibold;
+  }
+
+  .text-status-idle {
+    @apply text-gray-400 font-semibold;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .gap-gutter {
+    @apply gap-4;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
