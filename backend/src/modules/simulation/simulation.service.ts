@@ -14,9 +14,6 @@ export class SimulationService {
   private simulationGoalIntervals: Map<string, NodeJS.Timeout> = new Map();
 
   async createSimulation(name: string): Promise<Simulation> {
-    this.validateRateLimit();
-    this.validateRateLimit();
-
     const id = uuidv4();
     const matches = JSON.parse(JSON.stringify(PREDEFINED_MATCHES)) as Match[];
 
@@ -30,7 +27,6 @@ export class SimulationService {
     };
 
     this.simulations.set(id, simulation);
-    this.lastSimulationStartTime = Date.now();
     return simulation;
   }
 

@@ -32,17 +32,12 @@ describe('SimulationService', () => {
       expect(result.elapsedTime).toBe(0);
     });
 
-    it('should enforce rate limiting', async () => {
-      // Restore the original validateRateLimit for this test
-      jest.restoreAllMocks();
-      
-      // First call should succeed
-      await service.createSimulation('First Simulation 001');
+    it('should allow multiple simulations to be created without rate limiting', async () => {
+      const first = await service.createSimulation('First Simulation 001');
+      const second = await service.createSimulation('Second Simulation 002');
 
-      // Second call within 5 seconds should fail
-      await expect(service.createSimulation('Second Simulation 002')).rejects.toThrow(
-        'Cannot start simulations more than once per 5 seconds',
-      );
+      expect(first.id).not.toBe(second.id);
+      expect(second.name).toBe('Second Simulation 002');
     });
 
     it('should reset scores to 0 for all teams in matches', async () => {
@@ -82,12 +77,22 @@ describe('SimulationService', () => {
 
       await service.startSimulation(simulation.id, goalCallback);
 
-      // Wait for rate limit to reset
-      await new Promise(resolve => setTimeout(resolve, 5100));
-
       await expect(
         service.startSimulation(simulation.id, goalCallback),
       ).rejects.toThrow('Simulation is already running');
+    }, 10000);
+
+    it('should enforce rate limiting across separate simulation starts', async () => {
+      jest.restoreAllMocks();
+
+      const simA = await service.createSimulation('Rate Limit A');
+      const simB = await service.createSimulation('Rate Limit B');
+      const goalCallback = jest.fn();
+
+      await service.startSimulation(simA.id, goalCallback);
+      await expect(service.startSimulation(simB.id, goalCallback)).rejects.toThrow(
+        'Cannot start simulations more than once per 5 seconds',
+      );
     }, 10000);
 
     it('should reset scores when starting', async () => {
